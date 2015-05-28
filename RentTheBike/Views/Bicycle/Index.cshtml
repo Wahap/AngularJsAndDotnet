@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RentTheBike.Models.Bicycle>
+
+@{
+    ViewBag.Title = "Index";
+    
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Bicycles</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      
+        <a class="btn btn-primary" role="button" href="~/Bicycle/BicycleEditor">Add new bicycle</a>
+        @Html.ActionLink("BicycleEditor", "BicycleEditor", "Bicycle")
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        &nbsp;
+    </div>
+</div>
+<div class="row" ng-controller="bicycleController" > 
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                    <th>Daily rent price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="bicycle in bicycles">
+                    <td>{{bicycle.id}}</td>
+                    <td>{{bicycle.Name}}</td>
+                    <td>{{bicycle.TypeName}}</td>
+                    <td>{{bicycle.Quantity}}</td>
+                    <td>{{bicycle.RentPrice | currency}}</td>
+                    <td><a class="btn btn-default" role="button" href="#/bicycles/{{bicycle.id}}/edit">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
